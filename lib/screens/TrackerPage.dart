@@ -26,25 +26,26 @@ class _TrackerPageState extends State<TrackerPage> {
       appBar: AppBar(
         title: const Text("Budget Tracker"),
         actions: [
-          IconButton(onPressed: () {
-            showDialog(
-                context: context,
-                builder: (context){
-                  return BalanceDialog(
-                      balanceToAdd: (budget){
-                        final budgetProvider = Provider.of<BudgetViewModel>(context,listen: false);
-                        budgetProvider.budget=budget;
+          IconButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return BalanceDialog(
+                          balanceToAdd: (budget) {
+                            final budgetProvider = Provider.of<BudgetViewModel>(context,listen: false);
+                            budgetProvider.budget=budget;
                       }
                   );
                 });
-          }, icon: const Icon(Icons.attach_money))
+            },
+              icon: const Icon(Icons.attach_money))
         ],
         leading: IconButton(
           icon: Icon(themeService.darkTheme? Icons.sunny: Icons.dark_mode),
           onPressed: () {
             themeService.darkTheme = !themeService.darkTheme;
           },
-
         ),
       ),
 
